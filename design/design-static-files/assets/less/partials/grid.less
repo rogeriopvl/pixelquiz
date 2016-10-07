@@ -10,7 +10,6 @@
 	.col-left{
 		padding-right: 18px;
 		background: @brand-primary;
-		//background: @color-temp;
 		&.min{
 			width: 43.2%;
 		}
@@ -21,10 +20,43 @@
 	}
 	.col-right{
 		padding-left: 15px;
-		//background: @brand-primary;
-		//background: @color-temp2;
+		background: @brand-primary;
 		&.max{
 			width: 56.8%;
+		}
+	}
+}
+
+.game-info{
+	.col-container{
+		@media screen and (max-width: 1000px) {
+			padding: 0 5em;
+		}
+		@media screen and (max-width: 674px) {
+			padding: 0 3em;
+		}
+		@media screen and (max-width: 414px) {
+			padding: 0 2em;
+		}
+		@media screen and (max-width: 375px) {
+			padding: 0 1em;
+		}
+	}
+	.col-left{
+		@media screen and (max-width: 1000px) {
+            width: 100%;
+			padding-right: 0;
+			margin-bottom: 3em;
+        }
+	}
+	.col-right{
+		@media screen and (max-width: 1000px) {
+            width: 100%;
+			padding-left: 0;
+			margin-bottom: 4em;
+        }
+		@media screen and (max-width: 320px) {
+			margin-bottom: 1em;
 		}
 	}
 }

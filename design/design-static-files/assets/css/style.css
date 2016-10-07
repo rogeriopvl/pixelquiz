@@ -95,7 +95,6 @@ body {
   position: relative;
   padding: 0;
   margin: 0;
-  height: 1430px;
   -webkit-transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
@@ -277,9 +276,49 @@ a:active {
 }
 .col-container .col-right {
   padding-left: 15px;
+  background: #303242;
 }
 .col-container .col-right.max {
   width: 56.8%;
+}
+@media screen and (max-width: 1000px) {
+  .game-info .col-container {
+    padding: 0 5em;
+  }
+}
+@media screen and (max-width: 674px) {
+  .game-info .col-container {
+    padding: 0 3em;
+  }
+}
+@media screen and (max-width: 414px) {
+  .game-info .col-container {
+    padding: 0 2em;
+  }
+}
+@media screen and (max-width: 375px) {
+  .game-info .col-container {
+    padding: 0 1em;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .game-info .col-left {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 3em;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .game-info .col-right {
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 4em;
+  }
+}
+@media screen and (max-width: 320px) {
+  .game-info .col-right {
+    margin-bottom: 1em;
+  }
 }
 .main-container {
   margin: 0 auto;
@@ -299,6 +338,33 @@ h1.logo {
   font-family: 'Press Start 2P', cursive;
   padding-top: 1em;
   margin-bottom: 0.4em;
+}
+@media screen and (max-width: 730px) {
+  h1.logo {
+    padding-top: 0.3em;
+    margin-bottom: 0.2em;
+  }
+}
+@media screen and (max-width: 576px) {
+  h1.logo {
+    padding-top: 0.9em;
+    font-size: 2.5em;
+  }
+}
+@media screen and (max-width: 414px) {
+  h1.logo {
+    font-size: 2.3em;
+  }
+}
+@media screen and (max-width: 375px) {
+  h1.logo {
+    font-size: 2.2em;
+  }
+}
+@media screen and (max-width: 320px) {
+  h1.logo {
+    font-size: 1.9em;
+  }
 }
 h1.logo .clr-orange {
   margin-left: -5px;
@@ -336,6 +402,11 @@ h1.logo .clr-blue {
   width: 100%;
   text-align: center;
 }
+@media screen and (max-width: 480px) {
+  .register-form-container {
+    padding: 0 1em;
+  }
+}
 .register-form-container h4 {
   font-family: 'Cabin', sans-serif;
   color: #f1683f;
@@ -357,6 +428,33 @@ h1.logo .clr-blue {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin-left: -10px;
+}
+@media screen and (max-width: 674px) {
+  .register-form-container form.register-form input[type="text"] {
+    width: 80%;
+    font-size: 1.3em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .register-form-container form.register-form input[type="text"] {
+    font-size: 1.2em;
+  }
+}
+@media screen and (max-width: 414px) {
+  .register-form-container form.register-form input[type="text"] {
+    font-size: 1.1em;
+  }
+}
+@media screen and (max-width: 375px) {
+  .register-form-container form.register-form input[type="text"] {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 320px) {
+  .register-form-container form.register-form input[type="text"] {
+    font-size: 0.8em;
+    height: 52px;
+  }
 }
 .register-form-container form.register-form input[type="text"]::-webkit-input-placeholder {
   color: #c7cae3;
@@ -383,6 +481,14 @@ h1.logo .clr-blue {
   -o-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
+@media screen and (max-width: 320px) {
+  .register-form-container form.register-form a.rf-btn {
+    height: 53px;
+    width: 36px;
+    position: relative;
+    top: -17px;
+  }
+}
 .register-form-container form.register-form a.rf-btn span.icon-play {
   color: #f1683f;
   font-size: 4.8em;
@@ -390,6 +496,23 @@ h1.logo .clr-blue {
   top: -37px;
   left: -7px;
   z-index: 2;
+}
+@media screen and (max-width: 674px) {
+  .register-form-container form.register-form a.rf-btn span.icon-play {
+    top: -33px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .register-form-container form.register-form a.rf-btn span.icon-play {
+    top: -30px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .register-form-container form.register-form a.rf-btn span.icon-play {
+    left: -4px;
+    top: 1px;
+    font-size: 3.3em;
+  }
 }
 .register-form-container form.register-form a.rf-btn span.play {
   position: relative;
@@ -404,22 +527,58 @@ h1.logo .clr-blue {
   -o-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
+@media screen and (max-width: 830px) {
+  .register-form-container form.register-form a.rf-btn span.play {
+    visibility: hidden;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+}
 .register-form-container form.register-form a.rf-btn:hover {
   text-decoration: none;
 }
 .register-form-container form.register-form a.rf-btn:hover span.play {
   left: 64px;
 }
+@media screen and (max-width: 830px) {
+  .register-form-container form.register-form a.rf-btn:hover span.play {
+    left: 11px;
+  }
+}
 .game-info {
   float: left;
   width: 100%;
   margin-top: 4em;
+}
+@media screen and (max-width: 375px) {
+  .game-info {
+    margin-top: 3em;
+  }
+}
+@media screen and (max-width: 320px) {
+  .game-info {
+    margin-top: 1.5em;
+  }
 }
 .game-info h3 {
   font-family: 'Press Start 2P', cursive;
   margin-top: 0;
   font-size: 1.8em;
   margin-bottom: 0.6em;
+  position: relative;
+}
+@media screen and (max-width: 414px) {
+  .game-info h3 {
+    margin-top: 1.8em;
+  }
+}
+@media screen and (max-width: 320px) {
+  .game-info h3 {
+    font-size: 1.4em;
+    margin-top: 2.6em;
+  }
 }
 .game-info p {
   position: relative;
@@ -432,6 +591,7 @@ h1.logo .clr-blue {
   border: 22px solid #3c3f52;
   padding: 24px;
   position: relative;
+  min-height: 370px;
 }
 .game-info .frame-rules .icon-window {
   background: #303242;
@@ -448,11 +608,22 @@ h1.logo .clr-blue {
 .game-info .frame-rules p:first-of-type {
   width: 75%;
 }
+@media screen and (max-width: 320px) {
+  .game-info .frame-rules p:first-of-type {
+    width: 100%;
+  }
+}
 .game-info .frame-points {
   border: 22px solid #3c3f52;
   width: 90%;
   padding: 24px;
   position: relative;
+  min-height: 370px;
+}
+@media screen and (max-width: 1000px) {
+  .game-info .frame-points {
+    width: 100%;
+  }
 }
 .game-info .frame-points .icon-trophy {
   background: #303242;
@@ -467,8 +638,18 @@ h1.logo .clr-blue {
 .game-info .frame-points p {
   margin: 0 0 31px 0;
 }
+@media screen and (max-width: 480px) {
+  .game-info .frame-points p {
+    margin: 0 0 16px 0;
+  }
+}
 .game-info .frame-points p:first-of-type {
   width: 85%;
+}
+@media screen and (max-width: 320px) {
+  .game-info .frame-points p:first-of-type {
+    width: 100%;
+  }
 }
 .main-holder {
   float: left;
@@ -533,6 +714,9 @@ h1.logo .clr-blue {
   width: 305px;
   padding: 0;
   position: relative;
+}
+.game-play .frame-stage .image-container img {
+  width: 100%;
 }
 .game-play .frame-statusboard {
   border: 22px solid #3c3f52;
