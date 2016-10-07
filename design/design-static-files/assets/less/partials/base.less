@@ -1,0 +1,100 @@
+* {
+    .box-sizing(border-box);
+}
+.clearfix:before, .clearfix:after{
+    content: '';
+    display: table;
+}
+.clerafix:after{
+    clear: both;
+}
+
+body, input, textarea, select, button {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga", "kern";
+	//background: transparent url(../imgs/loopvids-homepage.jpg) no-repeat left top;
+}
+
+body{
+	background-color: @light-grey;
+	color: @color-text;
+	font-style: normal;
+	font-family: @primary-font;
+	font-size: 16px;
+	font-weight: 300;
+	position: relative;
+    padding: 0;
+    margin: 0;
+
+	.transition-properties(all .15s ease-in-out);
+}
+ul{
+    margin: 0;
+    padding: 0;
+    li{
+        list-style: none;
+    }
+}
+a{
+	.transition-properties(all .15s ease-in-out);
+	text-decoration: none;
+	outline: none !important;
+	outline: 0 !important;
+	&:active{
+		outline: none !important;
+		outline: 0 !important;
+	}
+
+}
+img{
+	//max-width: 100%;
+}
+.half-padding{
+	padding: 5px;
+}
+.no-padding{
+	padding: 0 !important;
+}
+
+// .container {
+// 	//max-width: 1370px;
+// 	max-width: 1388px;
+// 	margin:0 auto;
+// }
+.color-temp{
+	background-color: rgba(255,0,0,.2);
+}
+.pink{
+	background-color: rgba(255,255,0,.2);
+}
+.no-tp{padding-top: 0 !important}
+.no-bp{padding-bottom: 0 !important}
+.no-lp{padding-left: 0 !important}
+.no-rp{padding-right: 0 !important}
+
+.no-tm{margin-top: 0 !important}
+.no-bm{margin-bottom: 0 !important}
+.no-lm{margin-left: 0 !important}
+.no-rm{margin-right: 0 !important}
+
+.hide{display: none !important}
+.show{display: block !important}
+
+.top-space{margin-top: 3em}
+.half-top-space{margin-top: 2em}
+
+.top-pad{padding-top: 3em}
+.half-top-pad{padding-top: 2em}
+
+.bottom-border{
+    border-bottom: 1px solid rgba(189, 196, 208, .58);
+}
+.top-border{
+    border-top: 1px solid rgba(189, 196, 208, .58);
+}
+.border{
+    border-top: 1px solid rgba(189, 196, 208, .58);
+    border-bottom: 1px solid rgba(189, 196, 208, .58);
+}
