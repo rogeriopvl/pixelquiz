@@ -28,7 +28,6 @@ const Timer = React.createClass({
     const timeDiff = ((Date.now() - (this.state && this.state.start)) / 1000) /* NaN-killer */ | 0
     const tMinusThirty = timeDiff < 30 ? 30 - timeDiff : 0
     const number = ('00' + tMinusThirty).substr(-2)
-    console.log('start',this.state && this.state.start, 'timediff', timeDiff, 'number', number)
 
     return (
       <div>
