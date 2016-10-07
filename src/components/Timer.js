@@ -9,14 +9,22 @@ const Timer = React.createClass({
   },
   componentWillUpdate(nextProps, nextState) {
     const started = Boolean(this.state && this.state.start)
-    if (nextProps && nextProps.currentAlbum !== this.props && this.props.currentAlbum || !started || ((this.state && this.state.forceUpdateLol) !== nextState.forceUpdateLol)) {
+    const nextAlbum = nextProps && nextProps.currentAlbum
+    const currentAlbum = this.props && this.props.currentAlbum
+    if (nextAlbum !== currentAlbum || !currentAlbum) {
       this.setState({ start: Date.now() })
+    }
+  },
+  componentWillUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer)
     }
   },
   render() {
     const timeDiff = ((Date.now() - (this.state && this.state.start)) / 1000) /* NaN-killer */ | 0
-    const number = ('00' + timeDiff).substr(-2)
-    console.log('start',this.state.start, 'timediff', timeDiff, 'number', number)
+    const tMinusThirty = timeDiff < 30 ? 30 - timeDiff : 0
+    const number = ('00' + tMinusThirty).substr(-2)
+    console.log('start',this.state && this.state.start, 'timediff', timeDiff, 'number', number)
     return (
       <div>
         {number}
