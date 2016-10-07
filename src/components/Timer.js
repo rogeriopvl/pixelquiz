@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 const Timer = React.createClass({
   componentWillMount() {
@@ -8,7 +7,6 @@ const Timer = React.createClass({
     }, 1000)
   },
   componentWillUpdate(nextProps, nextState) {
-    const started = Boolean(this.state && this.state.start)
     const nextAlbum = nextProps && nextProps.currentAlbum
     const currentAlbum = this.props && this.props.currentAlbum
     if (nextAlbum !== currentAlbum || !currentAlbum) {
