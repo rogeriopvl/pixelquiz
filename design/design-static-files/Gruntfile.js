@@ -5,16 +5,16 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     watch: {
-        files: "assets/less/**/*.less",
+        files: "static/less/**/*.less",
         tasks: ["less"]
   	},
 
     less: {
         compile: {
             options: {
-                paths: ['assets']
+                paths: ['static']
             },
-            files: {'assets/css/style.css': 'assets/less/main.less'},
+            files: {'static/css/style.css': 'static/less/main.less'},
             options: { spawn: false }
         }
     },
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         dev: {
             bsFiles: {
                 src : [
-                    'assets/css/*.css',
+                    'static/css/*.css',
                     './*.html'
                 ]
             },
@@ -42,9 +42,9 @@ module.exports = function(grunt) {
         target: {
             files: [{
                 expand: true,
-                cwd: 'assets/css',
+                cwd: 'static/css',
                 src: ['*.css', '!*.min.css'],
-                dest: 'assets/css',
+                dest: 'static/css',
                 ext: '.min.css'
             }]
         }
@@ -54,9 +54,9 @@ module.exports = function(grunt) {
   		all: {
   			files: [{
   				expand: true,
-  				cwd: 'assets/imgs',
+  				cwd: 'static/imgs',
   				src: ['**/*.{png,jpg,gif}'],
-  				dest: 'assets/imgs'
+  				dest: 'static/imgs'
   			}]
   		}
   	},
@@ -65,9 +65,9 @@ module.exports = function(grunt) {
       my_target: {
         files: [{
             expand: true,
-            cwd: 'assets/js',
+            cwd: 'static/js',
             src: '**/*.js',
-            dest: 'assets/js/min'
+            dest: 'static/js/min'
         }]
       }
     }
