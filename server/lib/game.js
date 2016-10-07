@@ -63,10 +63,10 @@ module.exports = function makeGame (players, quiz, sleep, dateObj) {
                 if (ans === null) { return 0 }
 
                 return module.exports.scoreAnswer({
-                  answer: ans.answer,
+                  answer: ans[0],
                   correctArtist: quiz[i].artist,
                   correctTitle: quiz[i].title,
-                  delay: ans.delay
+                  delay: ans[2]
                 })
               }))
             }

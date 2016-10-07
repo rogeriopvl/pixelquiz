@@ -11,10 +11,10 @@ var makeGame = require('./lib/game')
 
 var app = express()
 
-app.use('/static', express.static(path.resolve(__dirname + '/../build')))
+app.use('/static', express.static(path.resolve(__dirname + '/../build/static')))
 
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve(__dirname + '/../dist/index.html'))
+  res.sendFile(path.resolve(__dirname + '/../build/index.html'))
 })
 
 var port = process.env.PORT || 8888

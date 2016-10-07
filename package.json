@@ -65,7 +65,8 @@
     "start:web": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "deploy": "npm run build && git add . && git commit -m \"prod\" && git push heroku master"
   },
   "jest": {
     "moduleFileExtensions": [
