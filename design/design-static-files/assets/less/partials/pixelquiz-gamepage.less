@@ -1,0 +1,267 @@
+.main-holder{
+	float: left;
+	width: 100%;
+    margin-top: -9px;
+	background: @brand-primary;
+    padding-bottom: 6.4em;
+}
+.game-play{
+	float: left;
+    width: 100%;
+    margin-top: 9.5em;
+	.legend-time{
+		position: absolute;;
+	    width: 100%;
+		top: -97px;
+	    left: 101px;
+	    z-index: 5;
+		p{
+			text-align: right;
+		    float: left;
+		    font-size: 1.15em;
+		    font-weight: 600;
+			color: @orange;
+			span{
+				font-style: italic;
+			}
+		}
+	}
+	.frame-stage{
+		border: 22px solid @frame-color-dark;
+		padding: 26px 24px 24px 24px;
+		position: relative;
+		.icon-window-single{
+			background: @brand-primary;
+			color: @frame-color-dark;
+			font-size: 8em;
+		    position: absolute;
+		    top: -145px;
+		    right: -36px;
+		    padding: 20px 13px 0 25px;
+		    line-height: 1.1;
+			height: 171px;
+			.counter{
+				position: relative;
+			    font-size: 0.23em;
+				font-family: @primary-font;
+				top: -110px;
+				left: 4px;
+			    text-align: center;
+				color: @white;
+				margin: 0;
+			}
+		}
+		.image-container{
+			overflow: hidden;
+		    background: @frame-color-dark;
+		    display: block;
+		    height: 305px;
+		    width: 305px;
+		    padding: 0;
+		    position: relative;
+		}
+	}
+	.frame-statusboard{
+		border: 22px solid @frame-color-dark;
+		width: 100%;
+		padding: 24px;
+		position: relative;
+		float: left;
+		height: 399px;
+		.icon-message{
+			background: @brand-primary;
+			color: @frame-color-dark;
+			font-size: 9.1em;
+			position: absolute;
+			top: -134px;
+			right: -47px;
+			padding: 20px 22px 0 25px;
+			line-height: 1.1;
+		}
+		.player-name{
+			position: absolute;;
+		    width: 100%;
+			top: -91px;
+		    left: -143px;
+		    z-index: 5;
+			p{
+				text-align: right;
+			    float: right;
+			    font-size: 1.2em;
+			    font-weight: 600;
+				color: @orange;
+				span{
+					font-family: @primary-font;
+					color: @white;
+					font-size: 1.4em;
+					position: relative;
+				    top: 3px;
+				}
+			}
+		}
+	}
+}
+ul{
+	&.status-thread{
+		position: relative;
+		z-index: 10;
+		min-height: 306px;
+	    max-height: 306px;
+	    overflow-y: auto;
+	    overflow-x: auto;
+		li{
+			list-style: none;
+			float: left;
+		    width: 100%;
+			position: relative;
+			.box-sizing(border-box);
+			padding: 13px;
+			&:nth-child(odd){
+				background: #343647;
+			}
+			&:nth-child(even){
+				background: #3c3f52;
+			}
+			p{
+				float: left;
+				width: 95%;
+				margin: 0;
+				font-weight: 700;
+				color: @white;
+				.player{
+					margin-right: 5px;
+				}
+			}
+			.answer-status{
+				position: absolute;
+				right: 13px;
+			    top: 14px;
+				span{
+					font-size: 1.1em;
+				}
+			}
+		}
+	}
+}
+
+.answer-form-container{
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin-top: 2.7em;
+	h4{
+		font-family: @secondary-font;
+		color: @orange;
+		font-size: 1.35em;
+	    margin-top: 0.8em;
+	    margin-bottom: 0.9em;
+	}
+	form{
+		&.answer-box{
+			input[type="text"]{
+				background: @white;
+				color: @brand-primary;
+				font-family: @primary-font;
+				width: 100%;
+			    border: 0;
+			    height: 77px;
+			    padding: 0.5em 1em 0 1em;
+			    font-size: 1.3em;
+			    .box-sizing(border-box);
+
+				&::-webkit-input-placeholder {
+					color: #c7cae3;
+				}
+				&:-moz-placeholder { /* Firefox 18- */
+				   color: #c7cae3;
+				}
+				&::-moz-placeholder {  /* Firefox 19+ */
+				   color: #c7cae3;
+				}
+				&:-ms-input-placeholder {
+				   color: #c7cae3;
+				}
+				&:focus{
+					outline: none;
+				}
+			}
+		}
+	}
+}
+
+.results-holder{
+	float: left;
+	width: 100%;
+	background: @light-section-bg;
+    padding-top: 5.6em;
+	padding-bottom: 6.4em;
+	.box-sizing(border-box);
+}
+
+.frame-score-results{
+	border: 22px solid @frame-color-light;
+	width: 100%;
+	padding: 24px;
+	position: relative;
+	float: left;
+	h3{
+		font-family: @primary-font;
+		margin-top: 0;
+	    font-size: 1.8em;
+        margin-bottom: 0.8em;
+	}
+	.icon-trophy{
+		background: @light-section-bg;
+		color: @frame-color-light;
+		font-size: 10.9em;
+		position: absolute;
+		top: -65px;
+    	right: -62px;
+		padding: 20px 22px 0 25px;
+	    line-height: 0.7;
+	}
+}
+
+ul{
+	&.results-list{
+		position: relative;
+		z-index: 10;
+		width: 84%;
+		li{
+			list-style: none;
+			float: left;
+		    width: 100%;
+			position: relative;
+			.box-sizing(border-box);
+			padding: 13px;
+			&:nth-child(odd){
+				background: #c1cdf4;
+			}
+			&:nth-child(even){
+				background: #b2c1ef;
+			}
+			p{
+				float: left;
+				width: 100%;
+				margin: 0;
+				font-weight: 700;
+				color: @brand-primary;
+				.player{
+					text-align: left;
+				}
+				.score{
+					float: right;
+					text-align: right;
+				}
+			}
+			.final-score{
+				position: absolute;
+				right: -58px;
+				top: 14px;
+				color: @brand-primary;
+				font-family: @primary-font;
+				font-size: 1.3em;
+			}
+		}
+	}
+}

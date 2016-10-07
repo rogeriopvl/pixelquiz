@@ -52,54 +52,104 @@
             </div>
         </div>
     <![endif]-->
+	<section class="main-holder">
 
-    <div class="main-container">
-		<header>
-			<h1 class="logo"><span class="clr-red">P</span><span class="clr-orange">i</span><span class="clr-yellow">x</span><span class="clr-green">e</span><span class="clr-blue">l</span><span class="clr-white">quiz</span></h1>
-		</header>
+	    <div class="main-container">
+			<header>
+				<h1 class="logo"><span class="clr-red">P</span><span class="clr-orange">i</span><span class="clr-yellow">x</span><span class="clr-green">e</span><span class="clr-blue">l</span><span class="clr-white">quiz</span></h1>
+			</header>
 
-		<div class="register-form-container">
-	        <h4>Insert your nick name to play</h4>
-	        <form class="register-form">
-				<input type="text" name="name" value="" placeholder="Insert nick name">
-				<a href="#" class="rf-btn" type="submit" name="button"><span class="icon-play"></span><span class="play">Play</span></a>
-	        </form>
-      	</div>
+			<section class="game-play">
 
-		<section class="game-info">
+				<div class="col-container">
+					<div class="col-left min">
 
-			<div class="col-container">
-				<div class="col-left">
-					<div class="frame-rules">
-						<span class="icon-window"></span>
-						<h3><span class="clr-red">G</span><span class="clr-orange">a</span><span class="clr-yellow">m</span><span class="clr-green">e</span></h3>
-						<p>The game consists of each player trying to guess what band and/or album a pixelated image belongs to.</p>
-						<p>This is done in 10 rounds of images.</p>
-						<p>For each round, all users will have 30 seconds to answer correctly.</p>
-						<p>For each round, all users will have 30 seconds to answer correctly.</p>
-						<p>As seconds go by, the image will become less pixelated.</p>
+						<div class="frame-stage">
+							<div class="legend-time">
+								<p>Time remaining:<br><span>(seconds)</span></p>
+							</div>
+							<div class="icon-window-single">
+								<p class="counter">30</p>
+							</div>
+							<div class="image-container">
+								<img src="assets/imgs/img-test.png" alt="" />
+
+							</div>
+						</div>
+					</div>
+					<div class="col-right max">
+						<div class="frame-statusboard">
+							<div class="player-name">
+								<p>Player: <span>Tiago</span></p>
+							</div>
+							<span class="icon-message"></span>
+							<ul class="status-thread">
+								<li>
+									<p> <span class="player clr-red">Tiago:</span> <span class="answer">U2 - Songs of Innocence</span></p>
+									<div class="answer-status"><span class="icon-dot clr-blue"></span></div>
+								</li>
+								<li>
+									<p> <span class="player clr-orange">Regéire:</span> <span class="answer">U2 - The Joshua Tree</span></p>
+									<div class="answer-status"><span class="icon-dot clr-yellow"></span></div>
+								</li>
+								<li>
+									<p> <span class="player clr-yellow">Borges:</span> <span class="answer">The doors</span></p>
+									<div class="answer-status"><span class="icon-dot clr-red"></span></div>
+								</li>
+								<li>
+									<p> <span class="player clr-green">Fabs:</span> <span class="answer">U2 - Songs of Innocence</span></p>
+									<div class="answer-status"><span class="icon-dot clr-green"></span></div>
+								</li>
+								<li>
+									<p> <span class="player clr-blue">Junior:</span> <span class="answer">U2 - Songs of Innocence</span></p>
+									<div class="answer-status"><span class="icon-dot clr-blue"></span></div>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-				<div class="col-right">
-					<div class="frame-points">
+
+				<div class="answer-form-container">
+			        <h4>Hurry up!! Try to guess quickly to receive more points!</h4>
+			        <form class="answer-box">
+						<input type="text" name="name" value="" placeholder="Insert your answer here then hit <Enter>">
+			        </form>
+		      	</div>
+
+			</section>
+    	</div>
+	</section>
+
+	<section class="results-holder">
+
+		<div class="main-container">
+			<div class="col-container">
+				<div class="col-full">
+					<div class="frame-score-results">
 						<span class="icon-trophy"></span>
-						<h3><span class="clr-red">P</span><span class="clr-orange">o</span><span class="clr-yellow">i</span><span class="clr-green">n</span><span class="clr-blue">t</span><span class="clr-white">s</span></h3>
-						<p>For each correct band a user will receive <span class="clr-yellow">30 * time_remaining</span> points.</p>
-						<p>For each correct album a user will receive <span class="clr-green">50 * time_remaining</span> points.</p>
-						<p>For each band_name - album_name a user will receive <span class="clr-blue">100 * time_remaining</span> points.</p>
+						<h3><span class="clr-red">R</span><span class="clr-orange">a</span><span class="clr-yellow">n</span><span class="clr-green">k</span><span class="clr-blue">i</span><span class="clr-grey">n</span><span class="clr-white">g</span></h3>
+						<ul class="results-list">
+							<li>
+								<p> <span class="player">Tiago</span> <span class="score">300 points</span></p>
+								<div class="final-score">#1</div>
+							</li>
+							<li>
+								<p> <span class="player">Regéire</span> <span class="score">200 points</span></p>
+								<div class="final-score">#2</div>
+							</li>
+							<li>
+								<p> <span class="player">Borges</span> <span class="score">100 points</span></p>
+								<div class="final-score">#1</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 
-		</section>
-
-
-    </div>
+	</section>
 
     <!-- ====  The Javascripts  ==== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- <script src="assets/js/remodal/remodal.js"></script>
-    <script src="assets/js/app-script.js"></script> -->
 
 </body>
 

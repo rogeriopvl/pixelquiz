@@ -1,169 +1,30 @@
-.main-container{
-    width: 100%;
-    display: block;
-    top: -21px;
-    position: relative;
-}
-.top-nav{
-    @media screen and (max-width: 1024px){
-        display: block;
-    }
-    display: none;
-}
-.sidebar{
-    @media screen and (max-width: 1024px){
-        display: none;
-    }
-    position: fixed;
-    float: left;
-    top: 0;
-    left: 0;
-    width: 300px;
-    min-height: 100vh;
-    visibility: visible;
-    .opacity(1);
-    max-height: none;
-    overflow: auto;
-    padding: 0;
-    .transition-properties(all .15s ease-in-out);
-}
-.main-wrapper{
-    @media screen and (max-width: 1024px){
-        margin-left: 0;
-        float: left;
-        width: 100%;
-    }
-    margin-left: 300px;
-    position: relative;
-    .transition-properties(all .15s ease-in-out);
-    //max-width: 1500px;
-}
-
-.sidecol-thumbs-wrapper{
-    float: left;
-    width: 100%;
-    .sidecol-col-left{
-        @media screen and (max-width: 1024px){
-            margin-right: 300px;
-            float: none;
-            width: auto;
-        }
-        @media screen and (max-width: 620px){
-            width: 100%;
-            float: left;
-            display: block;
-        }
-        width: 100%;
-        float: left;
-        display: block;
-    }
-    .sidecol-col-right{
-        @media screen and (max-width: 1024px){
-            display: inline-block;
-        }
-        @media screen and (max-width: 620px){
-            display: none;
-        }
-        float: right;
-        width: 300px;
-        padding-top: 3.3em;
-        display: none;
-    }
-    .sidecol-col-left{
-        .list-grid{
-            @media screen and (max-width: 744px){
-                .secondary-link.desktop{display: none}
-                .secondary-link.mobile{display: block}
-            }
-            border-bottom: 0;
-            .thumbs-list{
-                .thumb-wrapper{
-                    @media screen and (max-width: 1024px){
-                        width: 50%;
-                    }
-                    @media screen and (max-width: 768px){
-                        width: 100%;
-                    }
-                    @media screen and (max-width: 620px){
-                        width: 50%;
-                    }
-                    @media screen and (max-width: 480px){
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    }
-}
-.hero-cover{
-    &.video{
-        @media screen and (max-width: 1218px){
-            height: 380px;
-        }
-        @media screen and (max-width: 1105px){
-            height: 325px;
-        }
-        @media screen and (max-width: 1024px){
-            height: 440px;
-        }
-        @media screen and (max-width: 918px){
-            height: 350px;
-        }
-        @media screen and (max-width: 441px){
-            height: 280px;
-        }
-        @media screen and (max-width: 320px){
-            height: 220px;
-        }
-        position: absolute;
-        height: 440px;
-        min-height: inherit;
-    }
-}
-.sidecol-video-wrapper{
-    width: 100%;
-    float: left;
-    margin-top: 7.1em;
-    .sidecol-col-left{
-        @media screen and (max-width: 800px){
-            margin-right: 0;
-            float: left;
-            width: 100%;
-            padding-left: 2em;
-        }
-        @media screen and (max-width: 550px){
-            padding-left: 1.5em;
-        }
-        @media screen and (max-width: 320px){
-            padding-left: 1em;
-        }
-        margin-right: 300px;
-        float: none;
-        width: auto;
-        padding-left: 2.5em;
-        .home-player-holder{
-            width: 95%;
-            float: left;
-            top: 0;
-            margin-bottom: 0.4em;
-            background: none;
-        }
-    }
-    .sidecol-col-right{
-        @media screen and (max-width: 800px){
-            display: none;
-        }
-        position: relative;
-        z-index: 5;
-        float: right;
-        width: 300px;
-    }
-}
-.list-adpt{
-    @media screen and (max-width: 1024px){
-        display: none;
-    }
-    @media screen and (max-width: 620px){
-        display: block;;
-    }
+.col-container{
+	float: left;
+	width: 100%;
+	.col-left,
+	.col-right{
+		.box-sizing(border-box);
+		float: left;
+		width: 50%;
+	}
+	.col-left{
+		padding-right: 18px;
+		background: @brand-primary;
+		//background: @color-temp;
+		&.min{
+			width: 43.2%;
+		}
+	}
+	.col-full{
+		padding-right: 18px;
+		background: @color-temp;
+	}
+	.col-right{
+		padding-left: 15px;
+		//background: @brand-primary;
+		//background: @color-temp2;
+		&.max{
+			width: 56.8%;
+		}
+	}
 }
