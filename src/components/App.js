@@ -10,7 +10,7 @@ import AnswerBox from './AnswerBox'
 import ScoreBoard from './ScoreBoard'
 import { setPlayerName, sendAnswer } from '../actions'
 
-import './App.css'
+import '../../public/style.css'
 
 const App = React.createClass({
   propTypes: {
@@ -26,27 +26,36 @@ const App = React.createClass({
   render: function () {
     return (
       <div>
-        <h1><span className='red'>P</span><span className='orange'>i</span><span className='purple'>x</span><span className='green'>e</span><span className='blue'>l</span>quiz</h1>
+        <header>
+          <h1 className='logo'>
+            <span className='clr-red'>P</span>
+            <span className='clr-orange'>i</span>
+            <span className='clr-yellow'>x</span>
+            <span className='clr-green'>e</span>
+            <span className='clr-blue'>l</span>
+            <span className='clr-white'>quiz</span>
+          </h1>
+        </header>
         { (() => {
           if (this.props.playerName.length < 1) {
-          return <div className='register-area'>
-            <RegisterForm setPlayerName={ this.props.setPlayerName } />
-            <Instructions />
-          </div>
+            return <div>
+              <RegisterForm setPlayerName={this.props.setPlayerName} />
+              <Instructions />
+            </div>
           } else {
-          return <div className='game-area'>
-            <GameStatus gameStatus={ this.props.gameStatus } />
-            <div className='row'>
-              <AlbumImage url={ this.props.currentAlbum.get('imageUrl') } />
-              <MessageLog messages={ this.props.messages } />
+            return <div className='game-area'>
+              <GameStatus gameStatus={this.props.gameStatus} />
+              <div className='row'>
+                <AlbumImage url={this.props.currentAlbum.get('imageUrl')} />
+                <MessageLog messages={this.props.messages} />
+              </div>
+              <div className='row'>
+                <AnswerBox sendAnswer={this.props.sendAnswer} />
+              </div>
+              <div className='row'>
+                <ScoreBoard scores={this.props.scores} />
+              </div>
             </div>
-            <div className='row'>
-              <AnswerBox sendAnswer={ this.props.sendAnswer } />
-            </div>
-            <div className='row'>
-              <ScoreBoard scores={ this.props.scores } />
-            </div>
-          </div>
           }
         })() }
       </div>

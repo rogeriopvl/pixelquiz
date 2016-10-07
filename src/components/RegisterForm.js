@@ -1,7 +1,7 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 
-import './RegisterForm.css'
+// import './RegisterForm.css'
 
 const RegisterForm = React.createClass({
   propTypes: {
@@ -17,13 +17,15 @@ const RegisterForm = React.createClass({
 
   render: function () {
     return (
-      <div className='register-form'>
-        <h4>Please insert your nick name to play:</h4>
-        <form onSubmit={ this.onSubmitHandler }>
+      <div className='register-form-container'>
+        <h4>Insert your nick name to play</h4>
+        <form className='register-form' onSubmit={this.onSubmitHandler}>
           <input type='text'
-            ref={ (ref) => this.playerNameInput = ref }
+            ref={(ref) => (this.playerNameInput = ref)}
             placeholder='Insert nick name' />
-          <button>Play</button>
+          <a href='#' type='submit' name='button'>
+            <span className='icon-play' /><span className='play'>Play</span>
+          </a>
         </form>
       </div>
     )
