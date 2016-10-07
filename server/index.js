@@ -11,22 +11,17 @@ var makeGame = require('./lib/game')
 
 var app = express()
 
-app.use('/static', express.static(
-  path.resolve(path.join(__dirname, '..', 'build'))
-))
+app.use('/static', express.static(path.resolve(__dirname + '/../build')))
 
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve(path.join(__dirname, '..', 'dist', 'index.html')))
+  res.sendFile(path.resolve(__dirname + '/../dist/index.html'))
 })
 
 var port = process.env.PORT || 8888
-var server = http.createServer(app)
-
-// var server = app.listen(port, function () {
-//   console.log('listening at ' + port)
-// })
+var server = http.createServer(app);
 
 var wss = new WebSocketServer({server: server})
+var players = []
 
 wss.on('connection', function connection (ws) {
   ws.on('message', function incoming (message) {
@@ -51,9 +46,17 @@ wss.on('connection', function connection (ws) {
       if (currentGame == /* still */ null) {
         ws.send('["waiting_for_players"]\n')
       }
+
+      // game already started
     } else {
-      waitingSockets.push(ws)
-      ws.send('["waiting_for_game_end"]\n')
+      // waitingSockets.push(ws)
+      playerSockets.push(ws)
+      maybeStartGame()
+
+      players.push(addPlayer(ws))
+      currentGame.setPlayers(players)
+      broadcastScores()
+      // ws.send('["waiting_for_game_end"]\n')
     }
   })
 })
@@ -61,28 +64,35 @@ wss.on('connection', function connection (ws) {
 var currentGame = null
 var playerSockets = []
 var waitingSockets = []
+var scores = []
+var listeners = []
+
+function addPlayer (player) {
+  var playerEmitter = new events.EventEmitter()
+  listeners.push({ listener: onMessage, socket: player })
+  player.on('message', onMessage)
+  function onMessage (message) {
+    try {
+      message = JSON.parse(message)
+    } catch (e) {
+      console.error(e)
+      return
+    }
+    if (message[0] !== 'answer') { return }
+
+    playerEmitter.emit('answer', message[1])
+  }
+
+  return playerEmitter
+}
+
 function startGame (playerSockets) {
+  console.log('start game loloolllo')
   assert(playerSockets.length)
   assert(currentGame == null)
 
-  var listeners = []
-  var players = playerSockets.map(function (player, i) {
-    var playerEmitter = new events.EventEmitter()
-    listeners.push({ listener: onMessage, socket: player })
-    player.on('message', onMessage)
-    function onMessage (message) {
-      try {
-        message = JSON.parse(message)
-      } catch (e) {
-        console.error(e)
-        return
-      }
-      if (message[0] !== 'answer') { return }
-
-      playerEmitter.emit('answer', message[1])
-    }
-
-    return playerEmitter
+  players = playerSockets.map(function (player, i) {
+    return addPlayer(player)
   })
 
   var roundQuizes = []
@@ -92,42 +102,22 @@ function startGame (playerSockets) {
 
   currentGame = makeGame(players, roundQuizes)
 
-  /** Stuffs to broadcast **/
-  function broadcast (message) {
-    playerSockets.forEach(function (playerSocket, i) {
-      if (playerSocket.readyState === playerSocket.OPEN) {
-        playerSocket.send(JSON.stringify(message) + '\n')
-      }
-    })
-  }
-
   currentGame.on('start_round', function (quiz) {
     broadcast(['start_round', quiz])
   })
   currentGame.on('end_round', function () {
     broadcast(['end_round'])
   })
-  function playerInfo () {
-    return playerNames().map(function (name, idx) {
-      return {
-        name: name,
-        score: 0
-      }
-    })
-  }
+
   currentGame.on('start_game', function () {
     broadcast(['start_game', {
       players: playerInfo()
     }])
   })
   currentGame.on('scores', function (scoresArr) {
-    broadcast([
-      'scores',
-      playerInfo().map(function (info, i) {
-        info.score = scoresArr[i]
-        return info
-      })
-    ])
+    scores = scoresArr
+    console.log('scores', scores)
+    broadcastScores()
   })
   currentGame.on('answer', function (ans) {
     broadcast(['answer', { playerName: (playerSockets[ans[1]] || {})._playerName || '', answer: ans[0] }])
@@ -148,9 +138,34 @@ function startGame (playerSockets) {
   currentGame.start()
 }
 
-server.listen(port, function () {
-  console.log('Listening on ' + server.address().port)
-})
+server.listen(port, function () { console.log('Listening on ' + server.address().port) });
+
+function playerInfo () {
+  return playerNames().map(function (name, idx) {
+    return {
+      name: name,
+      score: 0
+    }
+  })
+}
+function broadcastScores () {
+  broadcast([
+    'scores',
+    playerInfo().map(function (info, i) {
+      info.score = scores[i]
+      return info
+    })
+  ])
+}
+
+/** Stuffs to broadcast **/
+function broadcast (message) {
+  playerSockets.forEach(function (playerSocket, i) {
+    if (playerSocket.readyState === playerSocket.OPEN) {
+      playerSocket.send(JSON.stringify(message) + '\n')
+    }
+  })
+}
 
 function socketsReadyToPlay () {
   playerSockets = playerSockets.concat(waitingSockets).filter(function (sock) {

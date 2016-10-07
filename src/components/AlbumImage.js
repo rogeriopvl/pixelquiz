@@ -39,7 +39,7 @@ const AlbumImage = React.createClass({
     if (this.props.url === props.url ||
         props.url == null) { return }
     var img = this.state.img = document.createElement('img')
-    img.src = 'http://cors.io/?u=' + props.url
+    img.src = props.url
     img.crossOrigin = 'Anonymous'  // If an image doesn't have CORS I can't toDataURL
     this.state.ready = false
     img.addEventListener('load', () => {

@@ -13,8 +13,10 @@ var timeSleep = function (time) {
 }
 
 var defaultDate = Date
+var allPlayers
 
 module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
+  allPlayers = players
   sleep = sleep || timeSleep  // unpacking didn't work with the lint
   dateObj = dateObj || defaultDate
   var game = new events.EventEmitter()  // The game emits events
@@ -24,15 +26,15 @@ module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
   game.start = function () {
     co(function * () {
       try {
-        var totalScores = new Array(players.length)  // playerIdx: score
-        for (let i = 0; i < players.length; i++) {
+        var totalScores = new Array(allPlayers.length)  // playerIdx: score
+        for (let i = 0; i < allPlayers.length; i++) {
           totalScores[i] = 0
         }
         game.emit('scores', totalScores)
         game.emit('start_game')
         for (let i = 0; i < quiz.length; i++) {
           game.emit('start_round', quiz[i])
-          var unlisten = module.exports.collectAnswers(players, { dateObj })
+          var unlisten = module.exports.collectAnswers(allPlayers, { dateObj })
           var onAnswer = function (answer) {
             game.emit('answer', answer, answer[1])
           }
@@ -95,6 +97,9 @@ module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
     game.emit('-terminated')  // Internal event
   }
 
+  game.setPlayers = function (players) {
+    allPlayers = players
+  }
   return game
 }
 
