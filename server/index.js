@@ -17,6 +17,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/../build/index.html'))
 })
 
+var TIME_BETWEEN_GAMES = 10000
+
 var port = process.env.PORT || 8888
 var server = http.createServer(app);
 
@@ -192,7 +194,7 @@ function maybeStartGame () {
     currentGame.on('end_game', function () {
       currentGame = null
 
-      setTimeout(maybeStartGame, 5000)
+      setTimeout(maybeStartGame, TIME_BETWEEN_GAMES)
     })
   }
 }

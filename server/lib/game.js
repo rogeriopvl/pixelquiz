@@ -12,6 +12,8 @@ var timeSleep = function (time) {
   })
 }
 
+var ROUND_DURATION = 30 * 1000
+
 var defaultDate = Date
 var allPlayers
 
@@ -42,7 +44,7 @@ module.exports = function makeGame (players, quiz, sleep, dateObj) {
 
           // Either everyone answered, or 30 seconds have passed, whichever comes first
           yield Promise.race([
-            sleep(30 * 1000),
+            sleep(ROUND_DURATION),
             new Promise(function (resolve) {
               unlisten.on('all-answered', function () {
                 setTimeout(resolve, 3 * 1000)

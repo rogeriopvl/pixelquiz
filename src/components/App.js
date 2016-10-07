@@ -47,31 +47,37 @@ const App = React.createClass({
               } else {
                 return (
                   <div>
-                    <section className="game-play">
-                      <div className="col-container">
-                        <div className="col-left min">
-                          <div className="frame-stage">
-                            <GameStatus
-                              gameStatus={this.props.gameStatus}
-                              currentAlbum={this.props.currentAlbum}
-                            />
-                            <AlbumImage url={this.props.currentAlbum.get('imageUrl')} />
-                          </div>
-                        </div>
-                        <div className="col-right max">
-                          <div className="frame-statusboard">
-                            <div className="player-name">
-                              <p>Player: <span>{this.props.playerName}</span></p>
+                    { (() => {
+                      if (this.props.gameStatus !== 'end_game') {
+                        return (
+                          <section className="game-play">
+                            <div className="col-container">
+                              <div className="col-left min">
+                                <div className="frame-stage">
+                                  <GameStatus
+                                    gameStatus={this.props.gameStatus}
+                                    currentAlbum={this.props.currentAlbum}
+                                  />
+                                  <AlbumImage url={this.props.currentAlbum.get('imageUrl')} />
+                                </div>
+                              </div>
+                              <div className="col-right max">
+                                <div className="frame-statusboard">
+                                  <div className="player-name">
+                                    <p>Player: <span>{this.props.playerName}</span></p>
+                                  </div>
+                                  <span className="icon-message"></span>
+                                  <MessageLog messages={this.props.messages} />
+                                </div>
+                              </div>
                             </div>
-                            <span className="icon-message"></span>
-                            <MessageLog messages={this.props.messages} />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="answer-form-container">
-                        <AnswerBox gameStatus={this.props.gameStatus} sendAnswer={this.props.sendAnswer} />
-                      </div>
-                    </section>
+                            <div className="answer-form-container">
+                              <AnswerBox gameStatus={this.props.gameStatus} sendAnswer={this.props.sendAnswer} />
+                            </div>
+                          </section>
+                        )
+                      }
+                    })() }
                   </div>
                   // <div className='game-area'>
                   //   <GameStatus
