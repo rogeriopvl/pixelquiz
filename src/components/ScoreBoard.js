@@ -1,6 +1,8 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 
+import sortBy from 'lodash.sortby'
+
 import './ScoreBoard.css'
 
 const ScoreBoard = React.createClass({
@@ -11,19 +13,19 @@ const ScoreBoard = React.createClass({
   mixins: [PureRenderMixin],
 
   getScores: function () {
-    return this.props.scores || []
+    return sortBy(this.props.scores && this.props.scores.toJS() || [], 'score')
   },
 
   render: function () {
     return (
       <ul className="results-list">
         { this.getScores().map((score, idx) => {
-            var s = score.get('score') ? score.get('score') : 0
+            var s = score.score ? score.score : 0
 
             return (
               <li key={idx}>
                 <p>
-                  <span className="player">{ score.get('name') }</span>
+                  <span className="player">{ score.name }</span>
                   <span className="score">{ s } points</span>
                 </p>
                 <div className="final-score">#{ idx }</div>
