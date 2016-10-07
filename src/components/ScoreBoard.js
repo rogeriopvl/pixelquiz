@@ -31,8 +31,8 @@ const ScoreBoard = React.createClass({
                 <div className="final-score">#{ idx + 1 }</div>
               </li>
             )
-          }
-        )}
+          }).slice(0).reverse()
+        }
       </ul>
     )
   }
