@@ -12,18 +12,18 @@ import App from './components/App'
 
 import './index.css'
 
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('root')
-// )
-
-// const sockUrl = 'pixelquiz.herokuapp.com:8888/'
 var HOST = location.origin.replace(/^https?:/, '')
 var portPos = HOST.indexOf(':')
 if (portPos !== -1) {
   HOST = HOST.substring(0, portPos)
 }
-HOST = 'ws:' + HOST // + ':' + (process.env.PORT || '8888')
+
+HOST = 'ws:' + HOST
+
+if (process.env.NODE_ENV === 'development') {
+  HOST += ':' + (process.env.PORT || '8888')
+}
+
 const connection = new window.WebSocket(HOST)
 
 const defaultState = fromJS({
