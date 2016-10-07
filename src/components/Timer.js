@@ -1,16 +1,22 @@
 import React from 'react'
 
 const Timer = React.createClass({
-  componentWillMount() {
+  syncTimer() {
+    // So that the seconds change at the same time the images do
+    clearInterval(this.timer)
     this.timer = setInterval(() => {
       this.setState({ forceUpdateLol: Math.random() })
     }, 1000)
+  },
+  componentWillMount() {
+    this.syncTimer()
   },
   componentWillUpdate(nextProps, nextState) {
     const nextAlbum = nextProps && nextProps.currentAlbum
     const currentAlbum = this.props && this.props.currentAlbum
     if (nextAlbum !== currentAlbum || !currentAlbum) {
       this.setState({ start: Date.now() })
+      this.syncTimer()
     }
   },
   componentWillUnmount() {
