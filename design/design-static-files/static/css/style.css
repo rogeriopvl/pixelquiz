@@ -14,8 +14,8 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i);
 @font-face {
   font-family: "pixelquiz";
-  src: url("/fonts/pixelquiz.eot");
-  src: url("/fonts/pixelquiz.eot?#iefix") format("embedded-opentype"), url("/fonts/pixelquiz.woff") format("woff"), url("/fonts/pixelquiz.ttf") format("truetype"), url("/fonts/pixelquiz.svg#loopvids") format("svg");
+  src: url("/static/fonts/pixelquiz.eot");
+  src: url("/static/fonts/pixelquiz.eot?#iefix") format("embedded-opentype"), url("/static/fonts/pixelquiz.woff") format("woff"), url("/static/fonts/pixelquiz.ttf") format("truetype"), url("/static/fonts/pixelquiz.svg#loopvids") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -658,10 +658,13 @@ h1.logo .clr-blue {
   background: #303242;
   padding-bottom: 6.4em;
 }
+.ingame h1 {
+  padding-top: 0.3em;
+}
 .game-play {
   float: left;
   width: 100%;
-  margin-top: 9.5em;
+  margin-top: 7.5em;
 }
 .game-play .legend-time {
   position: absolute;
@@ -717,6 +720,11 @@ h1.logo .clr-blue {
 }
 .game-play .frame-stage .image-container img {
   width: 100%;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
 }
 .game-play .frame-statusboard {
   border: 22px solid #3c3f52;
@@ -804,7 +812,7 @@ ul.status-thread li .answer-status span {
   float: left;
   width: 100%;
   text-align: center;
-  margin-top: 2.7em;
+  margin-top: 1.4em;
 }
 .answer-form-container h4 {
   font-family: 'Cabin', sans-serif;
