@@ -10,7 +10,7 @@ const Timer = React.createClass({
   componentWillUpdate(nextProps) {
     const started = Boolean(this.state && this.state.start)
     if (nextProps && nextProps.currentAlbum !== this.props && this.props.currentAlbum || !started) {
-      this.state.start = Date.now()
+      this.setState({ start: Date.now() })
     }
   },
   render() {
