@@ -15,7 +15,7 @@ var timeSleep = function (time) {
 var defaultDate = Date
 var allPlayers
 
-module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
+module.exports = function makeGame (players, quiz, sleep, dateObj) {
   allPlayers = players
   sleep = sleep || timeSleep  // unpacking didn't work with the lint
   dateObj = dateObj || defaultDate
@@ -62,12 +62,11 @@ module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
               var score = Math.max.apply(Math, answersFromThisPlayer.map(function (ans) {
                 if (ans === null) { return 0 }
 
-                var [answer, playerIdx, delay] = ans
                 return module.exports.scoreAnswer({
-                  answer: answer,
+                  answer: ans.answer,
                   correctArtist: quiz[i].artist,
                   correctTitle: quiz[i].title,
-                  delay: delay
+                  delay: ans.delay
                 })
               }))
             }
@@ -139,7 +138,12 @@ module.exports.collectAnswers = function (players, opt) {
 // For each correct band a user will receive `30 * time_remaining` points.
 // For each correct album a user will receive `50 * time_remaining` points.
 // For each `band_name - album_name` a user will receive `100 * time_remaining` points.
-module.exports.scoreAnswer = function ({ answer, correctArtist, correctTitle, delay }) {
+module.exports.scoreAnswer = function (options) {
+  var answer = options.answer
+  var correctArtist = options.correctArtist
+  var correctTitle = options.correctTitle
+  var delay = options.delay
+
   console.log('trimmin', answer)
   answer = answer.trim().toLowerCase()
   correctArtist = correctArtist.trim().toLowerCase()
@@ -154,9 +158,9 @@ module.exports.scoreAnswer = function ({ answer, correctArtist, correctTitle, de
       titleIsCorrect = true
     }
   } else {
-    var [artist, title] = answer.split(/\s*-\s*/)
-    artistIsCorrect = artist === correctArtist
-    titleIsCorrect = title === correctTitle
+    var res = answer.split(/\s*-\s*/)
+    artistIsCorrect = res[0] === correctArtist
+    titleIsCorrect = res[1] === correctTitle
   }
 
   var secondsRemaining = Math.round(((30 * 1000) - delay) / 1000)
