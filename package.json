@@ -51,6 +51,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "express": "^4.14.0",
     "immutable": "^3.8.1",
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
@@ -63,7 +64,7 @@
     "start:web": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "start": "babel-node server/index.js --presets es2015,stage-2"
+    "start": "node server/index.js"
   },
   "jest": {
     "moduleFileExtensions": [
