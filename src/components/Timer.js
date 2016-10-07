@@ -14,7 +14,7 @@ const Timer = React.createClass({
     }
   },
   render() {
-    const timeDiff = ((Date.now() - this.state.start) / 1000) /* NaN-killer */ | 0
+    const timeDiff = ((Date.now() - (this.state && this.state.start)) / 1000) /* NaN-killer */ | 0
     const number = ('00' + timeDiff).substr(-2)
     return (
       <div>
