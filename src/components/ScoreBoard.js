@@ -17,22 +17,22 @@ const ScoreBoard = React.createClass({
   },
 
   render: function () {
+    const lolada = this.getScores().slice(0).reverse().map((score, idx) => {
+      var s = score.score ? score.score : 0
+
+      return (
+        <li key={idx}>
+          <p>
+            <span className="player">{ score.name }</span>
+            <span className="score">{ s } points</span>
+          </p>
+          <div className="final-score">#{ idx + 1 }</div>
+        </li>
+      )
+    })
     return (
       <ul className="results-list">
-        { this.getScores().map((score, idx) => {
-            var s = score.score ? score.score : 0
-
-            return (
-              <li key={idx}>
-                <p>
-                  <span className="player">{ score.name }</span>
-                  <span className="score">{ s } points</span>
-                </p>
-                <div className="final-score">#{ idx + 1 }</div>
-              </li>
-            )
-          }).slice(0).reverse()
-        }
+        {lolada}
       </ul>
     )
   }
