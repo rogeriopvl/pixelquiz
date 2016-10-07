@@ -69,8 +69,7 @@ const App = React.createClass({
                         </div>
                       </div>
                       <div className="answer-form-container">
-                        <h4>Hurry up!! Try to guess quickly to receive more points!</h4>
-                        <AnswerBox sendAnswer={this.props.sendAnswer} />
+                        <AnswerBox gameStatus={this.props.gameStatus} sendAnswer={this.props.sendAnswer} />
                       </div>
                     </section>
                   </div>
