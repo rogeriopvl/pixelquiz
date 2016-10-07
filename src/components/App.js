@@ -28,7 +28,7 @@ const App = React.createClass({
       <div>
         <section className="main-holder">
           <div className="main-container">
-            <header>
+            <header className={this.props.playerName.length < 1 ? '' : 'ingame'}>
               <h1 className='logo'>
                 <span className='clr-red'>P</span>
                 <span className='clr-orange'>i</span>

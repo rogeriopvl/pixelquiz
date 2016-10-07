@@ -19,14 +19,13 @@ const ScoreBoard = React.createClass({
       <ul className="results-list">
         { this.getScores().map((score, idx) => {
             var s = score.get('score') ? score.get('score') : 0
-
             return (
               <li key={idx}>
                 <p>
                   <span className="player">{ score.get('name') }</span>
                   <span className="score">{ s } points</span>
                 </p>
-                <div className="final-score">#{ idx }</div>
+                <div className="final-score">#{ idx + 1 }</div>
               </li>
             )
           }
