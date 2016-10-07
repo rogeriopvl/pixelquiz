@@ -16,14 +16,17 @@ const ScoreBoard = React.createClass({
 
   render: function () {
     return (
-      <div className='score-board'>
-        <h4>Ranking</h4>
-        <ul>
-          { this.getScores().map((score, idx) =>
-            <li key={ idx }><b>{ score.get('name') }:</b> { score.get('score') }</li>
-          )}
-        </ul>
-      </div>
+      <ul className="results-list">
+        { this.getScores().map((score, idx) =>
+          <li>
+            <p>
+              <span className="player">{ score.get('name') }</span>
+              <span className="score">{ score.get('score') } points</span>
+            </p>
+            <div className="final-score">#{ idx }</div>
+          </li>
+        )}
+      </ul>
     )
   }
 })

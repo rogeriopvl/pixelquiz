@@ -1,8 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 
-import './AnswerBox.css'
-
 const AnswerBox = React.createClass({
   propTypes: {
     sendAnswer: React.PropTypes.func
@@ -18,14 +16,13 @@ const AnswerBox = React.createClass({
 
   render: function () {
     return (
-      <form className='answer-box col-sm-16' onSubmit={ this.onSubmitHandler }>
+      <form className="answer-box" onSubmit={ this.onSubmitHandler }>
         <input
-          type='text'
-          className='form-control'
+          type="text"
+          name="name"
           ref={ (ref) => this.answerInput = ref }
-          placeholder='Insert you answer here then <enter>'
-          autoFocus
-        />
+          placeholder="Insert your answer here then hit <Enter>"
+          autoFocus />
       </form>
     )
   }

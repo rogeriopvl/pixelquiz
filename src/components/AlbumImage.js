@@ -76,10 +76,10 @@ const AlbumImage = React.createClass({
 
   render: function () {
     if (!this.state.url) {
-      return <div className='album-image col-sm-6'>...</div>
+      return <div className='image-container'>...</div>
     }
     return (
-      <div className='album-image col-sm-6'>
+      <div className="image-container">
         <img src={this.state.url} />
       </div>
     )

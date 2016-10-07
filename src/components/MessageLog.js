@@ -17,12 +17,14 @@ const MessageLog = React.createClass({
       })
     }
     return (
-      <div className='message-log col-sm-6'
-        ref={ (ref) => this.messageLogEl = ref }>
+      <ul className="status-thread" ref={ (ref) => this.messageLogEl = ref }>
         { this.props.messages.map((msg, idx) =>
-          <p key={ idx }><b>{ msg['playerName'] }:</b> { msg['answer'] }</p>
+          <li key={ idx }>
+            <p> <span className="player clr-red">{ msg['playerName'] }:</span> <span className="answer">{ msg['answer'] }</span></p>
+            <div className="answer-status"><span className="icon-dot clr-blue"></span></div>
+          </li>
         )}
-      </div>
+      </ul>
     )
   }
 })
