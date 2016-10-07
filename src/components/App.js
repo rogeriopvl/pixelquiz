@@ -51,12 +51,10 @@ const App = React.createClass({
                       <div className="col-container">
                         <div className="col-left min">
                           <div className="frame-stage">
-                            <div className="legend-time">
-                              <p>Time remaining:<br/><span>(seconds)</span></p>
-                            </div>
-                            <div className="icon-window-single">
-                              <p className="counter">30</p>
-                            </div>
+                            <GameStatus
+                              gameStatus={this.props.gameStatus}
+                              currentAlbum={this.props.currentAlbum}
+                            />
                             <AlbumImage url={this.props.currentAlbum.get('imageUrl')} />
                           </div>
                         </div>

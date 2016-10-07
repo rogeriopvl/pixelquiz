@@ -31,7 +31,12 @@ const Timer = React.createClass({
     console.log('start',this.state && this.state.start, 'timediff', timeDiff, 'number', number)
     return (
       <div>
-        {number}
+        <div className="legend-time">
+          <p>Time remaining:<br/><span>(seconds)</span></p>
+        </div>
+        <div className="icon-window-single">
+          <p className="counter">{number}</p>
+        </div>
       </div>
     )
   }

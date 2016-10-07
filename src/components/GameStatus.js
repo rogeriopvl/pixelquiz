@@ -15,15 +15,12 @@ const GameStatus = React.createClass({
   },
 
   render: function () {
-    const timer = this.getStatus() === 'start_round' ?
-      (<TemporizaMisto currentAlbum={this.props.currentAlbum} />) :
-      null;
     return (
-      <div className='game-status'>
-        <span><b>Current Status:</b> { this.getStatus() }</span>
-        {timer}
-      </div>
+      this.getStatus() === 'start_round'
+      ? (<TemporizaMisto currentAlbum={this.props.currentAlbum} />)
+      : null
     )
+    // <span><b>Current Status:</b> { this.getStatus() }</span>
   }
 })
 
