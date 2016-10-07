@@ -586,12 +586,13 @@ h1.logo .clr-blue {
   font-size: 1.1em;
   line-height: 1.35;
   font-weight: 600;
+  font-family: 'Cabin', sans-serif !important;
 }
 .game-info .frame-rules {
   border: 22px solid #3c3f52;
   padding: 24px;
   position: relative;
-  min-height: 370px;
+  min-height: 375px;
 }
 .game-info .frame-rules .icon-window {
   background: #303242;
@@ -604,6 +605,7 @@ h1.logo .clr-blue {
 }
 .game-info .frame-rules p {
   margin: 0;
+  font-family: 'Cabin', sans-serif !important;
 }
 .game-info .frame-rules p:first-of-type {
   width: 75%;
@@ -618,7 +620,7 @@ h1.logo .clr-blue {
   width: 90%;
   padding: 24px;
   position: relative;
-  min-height: 370px;
+  min-height: 375px;
 }
 @media screen and (max-width: 1000px) {
   .game-info .frame-points {
@@ -636,6 +638,7 @@ h1.logo .clr-blue {
   line-height: 0.8;
 }
 .game-info .frame-points p {
+  font-family: 'Cabin', sans-serif !important;
   margin: 0 0 31px 0;
 }
 @media screen and (max-width: 480px) {
