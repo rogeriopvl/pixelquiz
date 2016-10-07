@@ -44,7 +44,10 @@ const App = React.createClass({
             </div>
           } else {
             return <div className='game-area'>
-              <GameStatus gameStatus={this.props.gameStatus} />
+              <GameStatus
+                gameStatus={this.props.gameStatus}
+                currentAlbum={this.props.currentAlbum}
+              />
               <div className='row'>
                 <AlbumImage url={this.props.currentAlbum.get('imageUrl')} />
                 <MessageLog messages={this.props.messages} />
