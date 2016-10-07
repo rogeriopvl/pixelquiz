@@ -1,0 +1,7 @@
+.score-board {
+    margin-top: 2em;
+}
+
+.score-board h4 {
+    border-bottom: 1px solid #000;
+}

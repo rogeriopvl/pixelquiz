@@ -51,15 +51,22 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "co": "^4.6.0",
+    "express": "^4.14.0",
+    "immutable": "^3.8.1",
     "react": "^15.3.2",
+    "react-addons-pure-render-mixin": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
     "ws": "^1.1.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start:web": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "server": "babel-node server/index.js --presets es2015,stage-2"
+    "start": "node server/index.js",
+    "deploy": "npm run build && git add . && git commit -m \"prod\" && git push heroku master"
   },
   "jest": {
     "moduleFileExtensions": [

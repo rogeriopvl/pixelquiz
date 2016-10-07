@@ -1,0 +1,8 @@
+.register-form {
+    margin-top: 2em;
+}
+
+.register-form input {
+    width: 300px;
+    margin-right: .5em;
+}

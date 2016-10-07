@@ -13,8 +13,10 @@ var timeSleep = function (time) {
 }
 
 var defaultDate = Date
+var allPlayers
 
-module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
+module.exports = function makeGame (players, quiz, sleep, dateObj) {
+  allPlayers = players
   sleep = sleep || timeSleep  // unpacking didn't work with the lint
   dateObj = dateObj || defaultDate
   var game = new events.EventEmitter()  // The game emits events
@@ -24,15 +26,15 @@ module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
   game.start = function () {
     co(function * () {
       try {
-        var totalScores = new Array(players.length)  // playerIdx: score
-        for (let i = 0; i < players.length; i++) {
+        var totalScores = new Array(allPlayers.length)  // playerIdx: score
+        for (let i = 0; i < allPlayers.length; i++) {
           totalScores[i] = 0
         }
         game.emit('scores', totalScores)
         game.emit('start_game')
         for (let i = 0; i < quiz.length; i++) {
           game.emit('start_round', quiz[i])
-          var unlisten = module.exports.collectAnswers(players, { dateObj })
+          var unlisten = module.exports.collectAnswers(allPlayers, { dateObj })
           var onAnswer = function (answer) {
             game.emit('answer', answer, answer[1])
           }
@@ -60,12 +62,11 @@ module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
               var score = Math.max.apply(Math, answersFromThisPlayer.map(function (ans) {
                 if (ans === null) { return 0 }
 
-                var [answer, playerIdx, delay] = ans
                 return module.exports.scoreAnswer({
-                  answer: answer,
+                  answer: ans[0],
                   correctArtist: quiz[i].artist,
                   correctTitle: quiz[i].title,
-                  delay: delay
+                  delay: ans[2]
                 })
               }))
             }
@@ -95,6 +96,9 @@ module.exports = function makeGame (players, quiz, { sleep, dateObj } = {}) {
     game.emit('-terminated')  // Internal event
   }
 
+  game.setPlayers = function (players) {
+    allPlayers = players
+  }
   return game
 }
 
@@ -134,7 +138,12 @@ module.exports.collectAnswers = function (players, opt) {
 // For each correct band a user will receive `30 * time_remaining` points.
 // For each correct album a user will receive `50 * time_remaining` points.
 // For each `band_name - album_name` a user will receive `100 * time_remaining` points.
-module.exports.scoreAnswer = function ({ answer, correctArtist, correctTitle, delay }) {
+module.exports.scoreAnswer = function (options) {
+  var answer = options.answer
+  var correctArtist = options.correctArtist
+  var correctTitle = options.correctTitle
+  var delay = options.delay
+
   console.log('trimmin', answer)
   answer = answer.trim().toLowerCase()
   correctArtist = correctArtist.trim().toLowerCase()
@@ -149,9 +158,9 @@ module.exports.scoreAnswer = function ({ answer, correctArtist, correctTitle, de
       titleIsCorrect = true
     }
   } else {
-    var [artist, title] = answer.split(/\s*-\s*/)
-    artistIsCorrect = artist === correctArtist
-    titleIsCorrect = title === correctTitle
+    var res = answer.split(/\s*-\s*/)
+    artistIsCorrect = res[0] === correctArtist
+    titleIsCorrect = res[1] === correctTitle
   }
 
   var secondsRemaining = Math.round(((30 * 1000) - delay) / 1000)
