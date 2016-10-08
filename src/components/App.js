@@ -61,6 +61,9 @@ const App = React.createClass({
                                   <AlbumImage url={this.props.currentAlbum.get('imageUrl')} />
                                 </div>
                               </div>
+                              <div className="answer-form-container mobile">
+                                <AnswerBox gameStatus={this.props.gameStatus} sendAnswer={this.props.sendAnswer} />
+                              </div>
                               <div className="col-right max">
                                 <div className="frame-statusboard">
                                   <div className="player-name">
