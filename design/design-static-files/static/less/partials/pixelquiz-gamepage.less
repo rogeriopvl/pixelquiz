@@ -4,21 +4,48 @@
     margin-top: -9px;
 	background: @brand-primary;
     padding-bottom: 6.4em;
+	@media screen and (max-width: 414px) {
+	    padding-bottom: 2.5em;
+	}
 }
 .ingame{
 	h1{
-		    padding-top: 0.3em;
+		&.logo{
+			@media screen and (max-width: 1000px) {
+			    font-size: 2.8em;
+				margin-bottom: 0.2em;
+			}
+			@media screen and (max-width: 414px) {
+			    font-size: 2.3em;
+			}
+			@media screen and (max-width: 320px) {
+			    padding-top: 0.6em;
+			    font-size: 1.9em;
+				position: relative;
+				z-index: 20;
+			}
+			padding-top: 0.3em;
+		}
 	}
 }
 .game-play{
+	@media screen and (max-width: 320px) {
+		margin-top: 5.2em;
+	}
 	float: left;
     width: 100%;
     margin-top: 7.5em;
 	.legend-time{
+		@media screen and (max-width: 414px) {
+			left: 49px;
+		}
+		@media screen and (max-width: 320px) {
+		    left: 23px;
+		}
 		position: absolute;;
 	    width: 100%;
 		top: -97px;
-	    left: 101px;
+		left: 81px;
 	    z-index: 5;
 		p{
 			text-align: right;
@@ -26,6 +53,7 @@
 		    font-size: 1.15em;
 		    font-weight: 600;
 			color: @orange;
+			font-family: @secondary-font !important;
 			span{
 				font-style: italic;
 			}
@@ -36,6 +64,11 @@
 		padding: 26px 24px 24px 24px;
 		position: relative;
 		.icon-window-single{
+			@media screen and (max-width: 320px) {
+		        font-size: 5.8em;
+				height: 137px;
+				top: -111px;
+			}
 			background: @brand-primary;
 			color: @frame-color-dark;
 			font-size: 8em;
@@ -46,6 +79,9 @@
 		    line-height: 1.1;
 			height: 171px;
 			.counter{
+				@media screen and (max-width: 320px) {
+			        top: -82px;
+				}
 				position: relative;
 			    font-size: 0.23em;
 				font-family: @primary-font;
@@ -57,6 +93,10 @@
 			}
 		}
 		.image-container{
+			@media screen and (max-width: 414px) {
+				width: 100%;
+				height: auto;
+	        }
 			overflow: hidden;
 		    background: @frame-color-dark;
 		    display: block;
@@ -78,6 +118,10 @@
 		float: left;
 		height: 399px;
 		.icon-message{
+			@media screen and (max-width: 320px) {
+		        top: -94px;
+				font-size: 5.9em;
+			}
 			background: @brand-primary;
 			color: @frame-color-dark;
 			font-size: 9.1em;
@@ -88,6 +132,13 @@
 			line-height: 1.1;
 		}
 		.player-name{
+			@media screen and (max-width: 375px) {
+			    font-size: 63%;
+			    top: -74px;
+			}
+			@media screen and (max-width: 320px) {
+			    left: -92px;
+			}
 			position: absolute;;
 		    width: 100%;
 			top: -91px;
@@ -99,6 +150,7 @@
 			    font-size: 1.2em;
 			    font-weight: 600;
 				color: @orange;
+				font-family: @secondary-font !important;
 				span{
 					font-family: @primary-font;
 					color: @white;
@@ -132,6 +184,10 @@ ul{
 				background: #3c3f52;
 			}
 			p{
+				@media screen and (max-width: 414px) {
+				    line-height: 1.4;
+					width: 90%;
+				}
 				float: left;
 				width: 95%;
 				margin: 0;
@@ -154,10 +210,47 @@ ul{
 }
 
 .answer-form-container{
+	@media screen and (max-width: 1000px) {
+		display: none;
+	}
 	float: left;
 	width: 100%;
 	text-align: center;
 	margin-top: 1.4em;
+	&.mobile{
+		@media screen and (max-width: 1000px) {
+			display: block;
+			margin-top: 0;
+		}
+		h4{
+			@media screen and (max-width: 320px) {
+				font-size: 1em;
+			}
+		}
+		display: none;
+		form{
+			&.answer-box{
+				input[type="text"]{
+					@media screen and (max-width: 1000px) {
+						font-size: 1.1em;
+					}
+					@media screen and (max-width: 910px) {
+						font-size: 0.9em;
+					}
+					@media screen and (max-width: 780px) {
+						font-size: 0.9em;
+					}
+					@media screen and (max-width: 716px) {
+						font-size: 0.8em;
+					}
+					@media screen and (max-width: 414px) {
+						font-size: 0.5em;
+						height: 55px;
+					}
+				}
+			}
+		}
+	}
 	h4{
 		font-family: @secondary-font;
 		color: @orange;
@@ -199,6 +292,10 @@ ul{
 }
 
 .results-holder{
+	@media screen and (max-width: 414px) {
+		padding-top: 3.6em;
+		padding-bottom: 3.1em;
+	}
 	float: left;
 	width: 100%;
 	background: @light-section-bg;
@@ -208,18 +305,33 @@ ul{
 }
 
 .frame-score-results{
+	@media screen and (max-width: 414px) {
+		border: 0;
+		padding: 7px;
+	}
 	border: 22px solid @frame-color-light;
 	width: 100%;
 	padding: 24px;
 	position: relative;
 	float: left;
 	h3{
+		@media screen and (max-width: 414px) {
+		    font-size: 1.4em;
+		}
+		position: relative;
+		z-index: 5;
 		font-family: @primary-font;
 		margin-top: 0;
 	    font-size: 1.8em;
         margin-bottom: 0.8em;
 	}
 	.icon-trophy{
+		@media screen and (max-width: 414px) {
+		    font-size: 5.6em;
+			padding: 20px 1px 0 25px;
+			right: -7px;
+			top: -53px;
+		}
 		background: @light-section-bg;
 		color: @frame-color-light;
 		font-size: 10.9em;
@@ -233,6 +345,9 @@ ul{
 
 ul{
 	&.results-list{
+		@media screen and (max-width: 414px) {
+		    margin-top: 2em;
+		}
 		position: relative;
 		z-index: 10;
 		width: 84%;
@@ -264,6 +379,9 @@ ul{
 				}
 			}
 			.final-score{
+				@media screen and (max-width: 414px) {
+			        right: -54px;
+				}
 				position: absolute;
 				right: -58px;
 				top: 14px;
