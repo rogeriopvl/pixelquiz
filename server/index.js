@@ -98,7 +98,7 @@ function startGame (playerSockets) {
   })
 
   var roundQuizes = []
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 6; i++) {
     roundQuizes.push(nmeAlbums.getRandomAlbum())
   }
 
