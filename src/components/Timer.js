@@ -31,7 +31,7 @@ const Timer = React.createClass({
 
     return (
       <div>
-        <div className="legend-time">
+        <div className="legend-time" style={{left: '81px'}}>
           <p>Time remaining:<br/><span>(seconds)</span></p>
         </div>
         <div className="icon-window-single">
