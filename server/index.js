@@ -35,7 +35,7 @@ wss.on('connection', function connection (ws) {
   })
 
   ws.once('message', function /* theFirstMessageIsThePlayerNameLel */ (playerName) {
-    ws._playerName = playerName.trim()
+    ws._playerName = playerName.trim().substring(0, 20)
     while (playerNames().indexOf(ws._playerName) !== -1) {
       ws._playerName += ' (doppelganger)'
     }
@@ -82,7 +82,7 @@ function addPlayer (player) {
     }
     if (message[0] !== 'answer') { return }
 
-    playerEmitter.emit('answer', message[1])
+    playerEmitter.emit('answer', (message[1] + '').substring(0, 50))
   }
 
   return playerEmitter

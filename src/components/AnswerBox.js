@@ -11,8 +11,11 @@ const AnswerBox = React.createClass({
 
   onSubmitHandler: function (e) {
     e.preventDefault()
-    this.props.sendAnswer(this.answerInput.value)
-    this.answerInput.value = ''
+    var val = (this.answerInput.value || '').trim()
+    if (val) {
+      this.props.sendAnswer(this.answerInput.value)
+      this.answerInput.value = ''
+    }
   },
 
   render: function () {
@@ -32,6 +35,7 @@ const AnswerBox = React.createClass({
             disabled={!started}
             type="text"
             name="name"
+            maxLength={50}
             ref={ (ref) => this.answerInput = ref }
             placeholder={placeholder}
             autoFocus />
