@@ -22,6 +22,7 @@ const RegisterForm = React.createClass({
         <form className='register-form' onSubmit={this.onSubmitHandler}>
           <input type='text'
             ref={(ref) => (this.playerNameInput = ref)}
+            maxLength={20}
             placeholder='Insert nick name' />
           <a onClick={this.onSubmitHandler} href='#' type='submit' name='button' className='rf-btn'>
             <span className='icon-play' /><span className='play'>Play</span>
