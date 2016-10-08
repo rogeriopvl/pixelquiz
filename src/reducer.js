@@ -9,7 +9,9 @@ const currentAlbum = function (state = Map(), action) {
 }
 
 const messages = function (state = List(), action) {
-  if (action.type === actions.SET_MESSAGES) {
+  if (action.type === actions.SET_GAME_STATUS && action.gameStatus == 'start_game') {
+    return List()
+  } else if (action.type === actions.SET_MESSAGES) {
     return state.update(action.messages)
   } else if (action.type === actions.UPDATE_MESSAGES) {
     return state.push(action.messages)
